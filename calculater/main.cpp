@@ -31,6 +31,12 @@ int main(){
 			cout << "Enter num2: "; cin >> num.b;
 			calculate(num);
 			break;
+		case 3:
+			cout << "Enter num1: "; cin >> num.a;
+			cout << "Plese enter mode of calculate "; cin >> num.c;
+			cout << "Enter num2: "; cin >> num.b;
+			calculate(num);
+			break;
 		}
 		
 	
