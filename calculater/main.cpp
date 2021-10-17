@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<math.h> 
+#include<cctype>
 
 using  namespace std;
 struct Member {
@@ -13,6 +14,7 @@ void calculate(Member& ft);
 void calculate(Member& ft, Member& ft1);
 void calculate(float, float, float);
 void calculate_qone(float, float, float);
+
 int Show_mode(int);
 
 int main(){
@@ -22,15 +24,25 @@ int main(){
 	string con;
 	int select;
 	cout << "Welcome, ";
-	cout << "to countium  press any key. (q to exit)\n"; cin >> con;
+	cout << "to continuum  press any key. (q to exit)\n"; cin >> con;
 	while (con != "q") {
 		cout << "Select mode of caclute" << endl;
 		switch (select = Show_mode(1)) {
 		case 1:
-			cout << "Enter num1: "; cin >> num.a;
-			cout << "Plese enter mode of calculate "; cin >> num.c;
-			cout << "Enter num2: "; cin >> num.b;
-			calculate(num);
+			while (con != "N") {
+				cout << "Enter num1: "; cin >> num.a;
+				cout << "Plese enter mode of calculate "; cin >> num.c;
+				while (*num.c != '+' && *num.c != '-' && *num.c != '*' && *num.c != '/'  ) {
+					cout << "Please retry enter +,-,*,/ " << endl;
+					cin >> num.c;
+				}
+				cout << "Enter num2: "; cin >> num.b;
+				calculate(num);
+				cout << "continuum or switch other mode? (Y/N)";
+				cin >> con;
+
+			}
+			
 			break;
 		case 2:		// linear equation with one unknowns
 			cout << "Please enter a,b,c for ax + b = c"<< endl;
@@ -59,9 +71,7 @@ int main(){
 			calculate(num1, num2);
 
 			break;
-		case 5:
-			// quadratic equation of two unknowns
-			break;
+		
 		}
 		
 	
@@ -72,6 +82,8 @@ int main(){
 
 	return 0;
 }
+
+
 void calculate(Member& ft) {
 	float d = 0;
 
@@ -151,14 +163,7 @@ void calculate(Member& ft, Member& ft1) {
 	cout << "Answer is : " << endl;
 	cout << " X = " << x << endl;
 	cout << " Y = " << y << endl;
-	//	cout << "Please enter 2 of 1, a,b,c for ax + by + c = 0 " << endl;
-	//cout << "a = ";	cin >> num1.a;
-	//cout << "b = "; cin >> num1.b;
-	//cout << "c = "; cin >> num1.cc;
-	//cout << "Please enter 2 of 2, a,b,c for ax + by + c = 0 " << endl;
-	//cout << "a = ";	cin >> num2.a;
-	//cout << "b = "; cin >> num2.b;
-	//cout << "c = "; cin >> num2.cc;
+	
 }
 
 
@@ -168,7 +173,6 @@ int Show_mode(int) {
 	int select_num;
 	cout << "1. Stardand mode " << "2. linear equation with one unknowns " << endl;
 	cout << "3. quadratic equation of one unknowns " << "4. linear equation in two unknowns " << endl;
-	cout << "5. quadratic equation of two unknowns " << endl;
 	cin >> select_num;
 	system("cls");
 	return select_num;
